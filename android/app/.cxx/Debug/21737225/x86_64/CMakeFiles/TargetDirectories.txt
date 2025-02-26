@@ -1,0 +1,2 @@
+/Users/nguyenvannhat/project_flutter/nsound/android/app/.cxx/Debug/21737225/x86_64/CMakeFiles/edit_cache.dir
+/Users/nguyenvannhat/project_flutter/nsound/android/app/.cxx/Debug/21737225/x86_64/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,2 @@
+/Users/nguyenvannhat/project_flutter/nsound/android/app/.cxx/Debug/21737225/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/nguyenvannhat/project_flutter/nsound/android/app/.cxx/Debug/21737225/armeabi-v7a/CMakeFiles/rebuild_cache.dir
