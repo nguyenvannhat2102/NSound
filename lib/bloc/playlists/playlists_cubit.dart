@@ -51,16 +51,6 @@ class PlaylistsCubit extends Cubit<PlaylistsState> {
     await queryPlaylistSongs(playlistId);
   }
 
-  // TODO: NOTE: Doesn't work. on_audio_query has a bug
-  // Future<void> removeFromPlaylist(
-  //   int playlistId,
-  //   int songId,
-  // ) async {
-  //   emit(PlaylistsLoading());
-  //   await _audioQuery.removeFromPlaylist(playlistId, songId);
-  //   await queryPlaylistSongs(playlistId);
-  // }
-
   Future<void> deletePlaylist(int playlistId) async {
     emit(PlaylistsLoading());
     await _audioQuery.removePlaylist(playlistId);

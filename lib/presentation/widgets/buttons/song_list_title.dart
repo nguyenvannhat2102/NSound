@@ -113,7 +113,7 @@ class _SongListTileState extends State<SongListTile> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.black.withOpacity(0.6),
+                        color: Colors.black,
                       ),
                     ),
                     Align(
@@ -163,7 +163,7 @@ class _SongListTileState extends State<SongListTile> {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.8),
+        color: Theme.of(context).textTheme.bodyMedium!.color!,
       ),
     );
   }

@@ -139,7 +139,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
           nullArtworkWidget: Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.1),
+              color: Colors.grey,
               borderRadius: BorderRadius.circular(0),
             ),
             child: const Icon(
@@ -154,7 +154,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black,
               borderRadius: BorderRadius.circular(0),
             ),
           ),
@@ -324,10 +324,7 @@ class _SwipeSongState extends State<SwipeSong> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: Themes.getTheme()
-                              .colorScheme
-                              .onSurface
-                              .withOpacity(0.7),
+                          color: Themes.getTheme().colorScheme.onSurface,
                         ),
                       ),
                     ],

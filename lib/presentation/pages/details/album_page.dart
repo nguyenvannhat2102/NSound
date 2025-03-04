@@ -102,7 +102,7 @@ class _AlbumPageState extends State<AlbumPage> {
                 ),
                 background: QueryArtworkWidget(
                   artworkBlendMode: BlendMode.darken,
-                  artworkColor: Colors.black.withOpacity(0.5),
+                  artworkColor: Colors.black,
                   id: widget.album.id,
                   type: ArtworkType.ALBUM,
                   size: 10000,
@@ -111,7 +111,7 @@ class _AlbumPageState extends State<AlbumPage> {
                   nullArtworkWidget: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.1),
+                      color: Colors.grey,
                       borderRadius: BorderRadius.circular(0),
                     ),
                     child: const Icon(
