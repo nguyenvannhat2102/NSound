@@ -32,10 +32,14 @@ class SeekBar extends StatelessWidget {
                   onChanged: (value) {
                     context.read<PlayerBloc>().add(
                           PlayerSeek(
-                            Duration(milliseconds: value.toInt()),
+                            Duration(
+                              milliseconds: value.toInt(),
+                            ),
                           ),
                         );
                   },
+                  activeColor: Colors.orange,
+                  inactiveColor: Colors.white,
                 ),
 
                 const SizedBox(height: 4),

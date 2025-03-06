@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/data/services/hive_box.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 

@@ -57,7 +57,6 @@ class JustAudioPlayer implements MusicPlayer {
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
     );
-
     // subscribe to changes in playback state to add to the recently played
     _player.playbackEventStream.listen((event) {
       if (event.currentIndex != null && currentPlaylist.isNotEmpty) {
@@ -65,12 +64,10 @@ class JustAudioPlayer implements MusicPlayer {
         SongRepository().addToRecentlyPlayed(songId);
       }
     });
-
     // set loop mode
     if (box.get(HiveBox.loopModeKey) != null) {
       _player.setLoopMode(LoopMode.values[box.get(HiveBox.loopModeKey)]);
     }
-
     // set shuffle mode
     if (box.get(HiveBox.shuffleModeKey) != null) {
       _player.setShuffleModeEnabled(

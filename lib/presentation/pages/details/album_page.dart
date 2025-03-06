@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/app/extensions/string_extensions.dart';
 import 'package:nsound/app/helpers/helpers.dart';
 import 'package:nsound/app/theme/themes.dart';
@@ -65,12 +65,11 @@ class _AlbumPageState extends State<AlbumPage> {
                   builder: (context, constraints) {
                     bool isLarge = constraints.maxHeight > 100;
                     bool isLong = widget.album.album.length > 20;
-
                     if (isLarge) {
                       return Text(
                         widget.album.album,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.orange,
                         ),
                       );
                     } else if (!isLong) {
@@ -111,11 +110,12 @@ class _AlbumPageState extends State<AlbumPage> {
                   nullArtworkWidget: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.grey.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(0),
                     ),
                     child: const Icon(
                       Icons.music_note_outlined,
+                      color: Colors.orange,
                       size: 100,
                     ),
                   ),

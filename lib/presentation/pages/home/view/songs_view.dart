@@ -10,7 +10,7 @@ import 'package:nsound/presentation/widgets/buttons/song_list_title.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nsound/app/constants/assets.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/bloc/home/home_bloc.dart';
 import 'package:nsound/bloc/player/player_bloc.dart';
 import 'package:nsound/data/repositories/player_repository.dart';
@@ -92,7 +92,10 @@ class _SongsViewState extends State<SongsView>
                                 builder: (context) => const SortBottomSheet(),
                               );
                             },
-                            icon: const Icon(Icons.swap_vert),
+                            icon: const Icon(
+                              Icons.swap_vert,
+                              color: Colors.orange,
+                            ),
                           ),
                         ],
                       ),
@@ -107,7 +110,7 @@ class _SongsViewState extends State<SongsView>
                             child: Container(
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.white.withValues(alpha: 0.3),
                                 borderRadius: BorderRadius.circular(32),
                               ),
                               child: InkWell(
@@ -119,10 +122,7 @@ class _SongsViewState extends State<SongsView>
                                       Assets.shuffleSvg,
                                       width: 20,
                                       colorFilter: ColorFilter.mode(
-                                        Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color!,
+                                        Colors.orange,
                                         BlendMode.srcIn,
                                       ),
                                     ),
@@ -140,11 +140,9 @@ class _SongsViewState extends State<SongsView>
                                   context.read<PlayerBloc>().add(
                                         PlayerSetShuffleModeEnabled(true),
                                       );
-
                                   // get random song
                                   final randomSong =
                                       songs[Random().nextInt(songs.length)];
-
                                   // play random song
                                   context.read<PlayerBloc>().add(
                                         PlayerLoadSongs(
@@ -162,7 +160,7 @@ class _SongsViewState extends State<SongsView>
                             child: Container(
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withValues(alpha: 0.3),
                                 borderRadius: BorderRadius.circular(32),
                               ),
                               child: InkWell(
@@ -174,10 +172,7 @@ class _SongsViewState extends State<SongsView>
                                       Assets.playSvg,
                                       width: 20,
                                       colorFilter: ColorFilter.mode(
-                                        Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .color!,
+                                        Colors.orange,
                                         BlendMode.srcIn,
                                       ),
                                     ),

@@ -32,20 +32,15 @@ class _ThemesPageState extends State<ThemesPage> {
             ),
           ),
           body: Ink(
-            padding: const EdgeInsets.fromLTRB(
-              32,
-              16,
-              32,
-              16,
-            ),
+            padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
             decoration: BoxDecoration(
               gradient: Themes.getTheme().linearGradient,
             ),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 10,
               ),
               itemCount: themeNames.length,
               itemBuilder: (context, index) {
@@ -69,7 +64,10 @@ class _ThemesPageState extends State<ThemesPage> {
             gradient: Themes.getThemeFromKey(themeName).linearGradient,
             boxShadow: [
               BoxShadow(
-                color: Themes.getThemeFromKey(themeName).colorScheme.primary,
+                color: Themes.getThemeFromKey(themeName)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.5),
                 blurRadius: 8,
                 spreadRadius: -5,
                 offset: const Offset(0, 0),

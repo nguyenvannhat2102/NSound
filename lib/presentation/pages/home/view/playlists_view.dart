@@ -34,7 +34,7 @@ class _PlaylistsViewState extends State<PlaylistsView>
     final cards = [
       const SizedBox(width: 16),
       PlaylistCard(
-        image: Assets.heart,
+        image: Assets.heart1,
         label: 'Favorites',
         icon: Icons.favorite_border_outlined,
         color: Colors.red,
@@ -46,7 +46,7 @@ class _PlaylistsViewState extends State<PlaylistsView>
       ),
       const SizedBox(width: 16),
       PlaylistCard(
-        image: Assets.earphones,
+        image: Assets.earphones1,
         label: 'Recents',
         icon: Icons.history_outlined,
         color: Colors.yellow,
@@ -79,7 +79,10 @@ class _PlaylistsViewState extends State<PlaylistsView>
                 ),
               );
             },
-            leading: const Icon(Icons.add),
+            leading: const Icon(
+              Icons.add,
+              color: Colors.orange,
+            ),
             title: const Text('Add playlist'),
           ),
 
@@ -187,7 +190,7 @@ class PlaylistCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.3),
           ),
           child: Column(
             children: [
@@ -199,8 +202,8 @@ class PlaylistCard extends StatelessWidget {
                 child: Image.asset(
                   image,
                   height: 150,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                  width: 150,
+                  fit: BoxFit.fill,
                 ),
               ),
               const SizedBox(height: 8),
@@ -248,7 +251,12 @@ class _AddPlaylistDialogState extends State<AddPlaylistDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Add playlist'),
+      title: const Text(
+        'Add playlist',
+        style: TextStyle(
+          color: Colors.orange,
+        ),
+      ),
       content: TextField(
         controller: _controller,
         decoration: const InputDecoration(
@@ -260,7 +268,12 @@ class _AddPlaylistDialogState extends State<AddPlaylistDialog> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text('Cancel'),
+          child: const Text(
+            'Cancel',
+            style: TextStyle(
+              color: Colors.orange,
+            ),
+          ),
         ),
         TextButton(
           onPressed: () async {
@@ -271,14 +284,17 @@ class _AddPlaylistDialogState extends State<AddPlaylistDialog> {
               Fluttertoast.showToast(msg: 'Playlist name cannot be empty');
               return;
             }
-
             // Step 2: Add playlist
             context.read<PlaylistsCubit>().createPlaylist(playlistName);
-
             // Step 3: Close dialog
             Navigator.of(context).pop();
           },
-          child: const Text('Add'),
+          child: const Text(
+            'Add',
+            style: TextStyle(
+              color: Colors.orange,
+            ),
+          ),
         ),
       ],
     );

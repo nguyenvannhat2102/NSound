@@ -6,7 +6,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nsound/app/constants/assets.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/app/helpers/helpers.dart';
 import 'package:nsound/app/router/app_router.dart';
 import 'package:nsound/bloc/player/player_bloc.dart';
@@ -86,17 +86,18 @@ class _SongListTileState extends State<SongListTile> {
           keepOldArtwork: true,
           id: widget.song.albumId ?? 0,
           type: ArtworkType.ALBUM,
-          artworkBorder: BorderRadius.circular(10),
+          artworkBorder: BorderRadius.circular(50),
           size: 500,
           nullArtworkWidget: Container(
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.grey,
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.grey[300],
             ),
             child: const Icon(
               Icons.music_note_outlined,
+              color: Colors.orange,
             ),
           ),
         ),
@@ -107,27 +108,26 @@ class _SongListTileState extends State<SongListTile> {
               stream: player.playing,
               builder: (context, snapshot) {
                 final isPlaying = snapshot.data ?? false;
-
                 return Stack(
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.black.withValues(alpha: 0.6),
                       ),
                     ),
                     Align(
                       alignment: Alignment.center,
                       child: ColorFiltered(
                         colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.primary,
+                          Colors.orange,
                           BlendMode.srcIn,
                         ),
                         child: Lottie.asset(
                           Assets.playingAnimation,
                           animate: isPlaying,
-                          height: 32,
-                          width: 32,
+                          height: 40,
+                          width: 40,
                         ),
                       ),
                     ),
@@ -149,7 +149,7 @@ class _SongListTileState extends State<SongListTile> {
         fontWeight: FontWeight.bold,
         color: currentMediaItem != null &&
                 currentMediaItem.id == widget.song.id.toString()
-            ? Theme.of(context).colorScheme.primary
+            ? Colors.orange
             : null,
       ),
     );
@@ -174,7 +174,7 @@ class _SongListTileState extends State<SongListTile> {
         // add to queue, add to playlist, delete, share
         _buildModalBottomSheet(context);
       },
-      icon: const Icon(Icons.more_vert_outlined),
+      icon: const Icon(Icons.more_vert_outlined, color: Colors.orange),
       tooltip: 'More',
     );
   }
@@ -197,21 +197,30 @@ class _SongListTileState extends State<SongListTile> {
                   top: Radius.circular(25),
                 ),
               ),
-              leading: const Icon(Icons.playlist_add_outlined),
+              leading: const Icon(
+                Icons.playlist_add_outlined,
+                color: Colors.orange,
+              ),
               title: const Text('Add to queue'),
               onTap: () {
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
-              leading: const Icon(Icons.playlist_add_outlined),
+              leading: const Icon(
+                Icons.playlist_add_outlined,
+                color: Colors.orange,
+              ),
               title: const Text('Add to playlist'),
               onTap: () {
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
-              leading: const Icon(Icons.delete_outlined),
+              leading: const Icon(
+                Icons.delete_outlined,
+                color: Colors.orange,
+              ),
               title: const Text('Delete'),
               onTap: () {
                 // Show a confirmation dialog before deleting the song
@@ -219,7 +228,10 @@ class _SongListTileState extends State<SongListTile> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: const Text('Delete Song'),
+                      title: const Text(
+                        'Delete Song',
+                        style: TextStyle(color: Colors.orange),
+                      ),
                       content: const Text(
                           'Are you sure you want to delete this song?'),
                       actions: <Widget>[
@@ -227,7 +239,10 @@ class _SongListTileState extends State<SongListTile> {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: const Text('Cancel'),
+                          child: const Text(
+                            'Cancel',
+                            style: TextStyle(color: Colors.orange),
+                          ),
                         ),
                         TextButton(
                           onPressed: () async {
@@ -277,7 +292,10 @@ class _SongListTileState extends State<SongListTile> {
                               Navigator.of(context).pop();
                             }
                           },
-                          child: const Text('Delete'),
+                          child: const Text(
+                            'Delete',
+                            style: TextStyle(color: Colors.orange),
+                          ),
                         ),
                       ],
                     );
@@ -286,7 +304,10 @@ class _SongListTileState extends State<SongListTile> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.share_outlined),
+              leading: const Icon(
+                Icons.share_outlined,
+                color: Colors.orange,
+              ),
               title: const Text('Share'),
               onTap: () async {
                 await shareSong(context, widget.song.data, widget.song.title);

@@ -13,7 +13,14 @@ class PreviousButton extends StatelessWidget {
       onPressed: () {
         context.read<PlayerBloc>().add(PlayerPrevious());
       },
-      icon: SvgPicture.asset(Assets.previousSvg, width: 40),
+      icon: SvgPicture.asset(
+        Assets.previousSvg,
+        width: 40,
+        colorFilter: ColorFilter.mode(
+          Colors.orange,
+          BlendMode.srcIn,
+        ),
+      ),
       tooltip: 'Previous',
     );
   }

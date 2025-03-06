@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/app/theme/themes.dart';
 import 'package:nsound/data/repositories/player_repository.dart';
 import 'package:nsound/presentation/widgets/buttons/song_list_title.dart';

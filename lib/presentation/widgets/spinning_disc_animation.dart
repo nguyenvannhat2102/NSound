@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/data/repositories/player_repository.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -66,10 +66,13 @@ class _SpinningDiscState extends State<SpinningDisc>
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: const Icon(Icons.music_note_outlined),
+              child: const Icon(
+                Icons.music_note_outlined,
+                color: Colors.orange,
+              ),
             ),
           ),
         );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nsound/app.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/bloc/favorites/favorites_bloc.dart';
 import 'package:nsound/bloc/home/home_bloc.dart';
 import 'package:nsound/bloc/player/player_bloc.dart';
@@ -25,6 +25,7 @@ void main() async {
   }
 
   await Hive.initFlutter();
+
   await Hive.openBox(HiveBox.boxName);
 
   await sl<MusicPlayer>().init();

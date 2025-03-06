@@ -6,7 +6,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 
 import 'package:nsound/bloc/player/player_bloc.dart' as bloc;
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/app/router/app_router.dart';
 import 'package:nsound/app/theme/themes.dart';
 import 'package:nsound/bloc/theme/theme_bloc.dart';
@@ -20,9 +20,7 @@ import 'package:nsound/presentation/widgets/spinning_disc_animation.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class PlayerBottomAppBar extends StatefulWidget {
-  const PlayerBottomAppBar({
-    super.key,
-  });
+  const PlayerBottomAppBar({super.key});
 
   @override
   State<PlayerBottomAppBar> createState() => _PlayerBottomAppBarState();
@@ -111,7 +109,8 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
                     height: isExpanded ? 216 : 60,
-                    color: Themes.getTheme().primaryColor,
+                    color:
+                        Themes.getTheme().primaryColor.withValues(alpha: 0.5),
                     child: isExpanded
                         ? _buildExpanded(sequence!, mediaItem)
                         : _buildCollapsed(sequence!, mediaItem),
@@ -145,6 +144,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
             child: const Icon(
               Icons.music_note_outlined,
               size: 100,
+              color: Colors.orange,
             ),
           ),
         ),
@@ -154,7 +154,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Colors.black.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(0),
             ),
           ),
@@ -236,7 +236,6 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
         ),
         PlayPauseButton(
           width: 20,
-          color: Theme.of(context).textTheme.bodyMedium!.color!,
         ),
         IconButton(
           onPressed: () {
@@ -244,7 +243,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
               AppRouter.queueRoute,
             );
           },
-          icon: const Icon(Icons.queue_music_outlined),
+          icon: const Icon(Icons.queue_music_outlined, color: Colors.orange),
         ),
         const SizedBox(width: 20),
       ],

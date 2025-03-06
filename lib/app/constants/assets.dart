@@ -3,8 +3,8 @@ class Assets {
   static const String logo = 'assets/icon/sound.png';
 
   // Images
-  static const String earphones = 'assets/images/earphones.jpg';
-  static const String heart = 'assets/images/heart.jpg';
+  static const String earphones1 = 'assets/images/earphones.png';
+  static const String heart1 = 'assets/images/romantic-music.png';
 
   // Lottie animations
   static const String playingAnimation = 'assets/lottie/playing.json';

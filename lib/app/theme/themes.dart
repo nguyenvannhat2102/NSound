@@ -22,18 +22,18 @@ class BlackTheme extends ThemeColor {
   BlackTheme()
       : super(
           themeName: 'Black',
-          primaryColor: const Color(0xff000000),
-          secondaryColor: const Color(0xFF1B1B1B),
+          primaryColor: Color(0xff000000),
+          secondaryColor: Color.fromARGB(255, 249, 166, 93),
           colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.grey,
             brightness: Brightness.dark,
           ),
           linearGradient: const LinearGradient(
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            end: Alignment.bottomLeft,
             colors: [
               Color(0xff000000),
-              Color(0xFF1B1B1B),
+              Color.fromARGB(255, 255, 193, 138),
             ],
           ),
         );
@@ -43,18 +43,18 @@ class WhiteTheme extends ThemeColor {
   WhiteTheme()
       : super(
           themeName: 'White',
-          primaryColor: const Color(0XFFD3CCE3),
-          secondaryColor: const Color(0xFFE9E4F0),
+          primaryColor: Color.fromARGB(255, 255, 255, 255),
+          secondaryColor: Color.fromARGB(255, 249, 193, 144),
           colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.grey,
             brightness: Brightness.light,
           ),
           linearGradient: const LinearGradient(
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            end: Alignment.bottomLeft,
             colors: [
-              Color(0XFFD3CCE3),
-              Color(0xFFE9E4F0),
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 193, 138),
             ],
           ),
         );

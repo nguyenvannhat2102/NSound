@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marquee/marquee.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/bloc/song/song_bloc.dart';
 import 'package:nsound/data/repositories/player_repository.dart';
 import 'package:nsound/data/repositories/song_repository.dart';
@@ -62,24 +62,6 @@ class _PlayerPageState extends State<PlayerPage> {
           },
           color: Colors.white,
         ),
-        actions: [
-          // more button
-          PopupMenuButton(
-            icon: const Icon(
-              Icons.more_vert_outlined,
-            ),
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  onTap: () {
-                    showSleepTimer(context);
-                  },
-                  child: const Text('Sleep timer'),
-                ),
-              ];
-            },
-          ),
-        ],
       ),
       extendBodyBehindAppBar: true,
       body: StreamBuilder<SequenceState?>(
@@ -103,7 +85,7 @@ class _PlayerPageState extends State<PlayerPage> {
                 nullArtworkWidget: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
+                    color: Colors.grey.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(0),
                   ),
                   child: const Icon(
@@ -118,7 +100,7 @@ class _PlayerPageState extends State<PlayerPage> {
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(0),
                   ),
                 ),
@@ -154,7 +136,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                 nullArtworkWidget: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Colors.grey.withOpacity(0.1),
+                                    color: Colors.grey.withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                   child: Icon(
@@ -234,7 +216,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                           maxLines: 1,
                                           style: const TextStyle(
                                             fontSize: 16,
-                                            color: Colors.white,
+                                            color: Colors.orange,
                                           ),
                                           minFontSize: 16,
                                           overflowReplacement: Marquee(
@@ -246,7 +228,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                                 const Duration(seconds: 3),
                                             style: const TextStyle(
                                               fontSize: 16,
-                                              color: Colors.white,
+                                              color: Colors.orange,
                                             ),
                                           ),
                                         ),
@@ -298,7 +280,7 @@ class _PlayerPageState extends State<PlayerPage> {
                               nullArtworkWidget: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.1),
+                                  color: Colors.grey.withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: Icon(
@@ -331,10 +313,8 @@ class _PlayerPageState extends State<PlayerPage> {
                             return const SizedBox.shrink();
                           }
                           final sequence = snapshot.data;
-
                           MediaItem? mediaItem =
                               sequence!.sequence[sequence.currentIndex].tag;
-
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -370,7 +350,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                   minFontSize: 15,
                                   style: const TextStyle(
                                     fontSize: 15,
-                                    color: Colors.white,
+                                    color: Colors.orange,
                                   ),
                                   overflowReplacement: Marquee(
                                     text: mediaItem.artist ?? 'Unknown',
@@ -379,7 +359,7 @@ class _PlayerPageState extends State<PlayerPage> {
                                     pauseAfterRound: const Duration(seconds: 3),
                                     style: const TextStyle(
                                       fontSize: 15,
-                                      color: Colors.white,
+                                      color: Colors.orange,
                                     ),
                                   ),
                                 ),
@@ -411,99 +391,6 @@ class _PlayerPageState extends State<PlayerPage> {
           );
         },
       ),
-    );
-  }
-
-  void showSleepTimer(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              ListTile(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
-                title: const Text('Off'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(PlayerSetSleepTimer(null));
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('5 minutes'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(minutes: 5),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('10 minutes'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(minutes: 10),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('15 minutes'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(minutes: 15),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('30 minutes'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(minutes: 30),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('45 minutes'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(minutes: 45),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('1 hour'),
-                onTap: () {
-                  // context.read<PlayerBloc>().add(
-                  //       PlayerSetSleepTimer(
-                  //         const Duration(hours: 1),
-                  //       ),
-                  //     );
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

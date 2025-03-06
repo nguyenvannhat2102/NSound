@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:nsound/app/di/main_injection_container.dart';
+import 'package:nsound/app/di/service_locator.dart';
 import 'package:nsound/app/router/app_router.dart';
 import 'package:nsound/bloc/home/home_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -55,7 +55,6 @@ class _AlbumsViewState extends State<AlbumsView>
                 itemCount: albums.length,
                 itemBuilder: (context, index) {
                   final album = albums[index];
-
                   return AnimationConfiguration.staggeredGrid(
                     position: index,
                     duration: const Duration(milliseconds: 500),
@@ -82,10 +81,11 @@ class _AlbumsViewState extends State<AlbumsView>
                                 height: 96,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  color: Colors.grey.withOpacity(0.1),
+                                  color: Colors.grey[300],
                                 ),
                                 child: const Icon(
                                   Icons.music_note_outlined,
+                                  color: Colors.orange,
                                 ),
                               ),
                             ),

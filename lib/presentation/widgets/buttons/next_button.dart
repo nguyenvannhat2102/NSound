@@ -13,7 +13,14 @@ class NextButton extends StatelessWidget {
       onPressed: () {
         context.read<PlayerBloc>().add(PlayerNext());
       },
-      icon: SvgPicture.asset(Assets.nextSvg, width: 40),
+      icon: SvgPicture.asset(
+        Assets.nextSvg,
+        width: 40,
+        colorFilter: ColorFilter.mode(
+          Colors.orange,
+          BlendMode.srcIn,
+        ),
+      ),
       tooltip: 'Next',
     );
   }

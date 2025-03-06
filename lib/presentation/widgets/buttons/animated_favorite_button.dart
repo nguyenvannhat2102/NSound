@@ -53,7 +53,7 @@ class _AnimatedFavoriteButtonState extends State<AnimatedFavoriteButton>
         margin: const EdgeInsets.only(right: 16, bottom: 16),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.black.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(50),
         ),
         child: Transform.scale(
