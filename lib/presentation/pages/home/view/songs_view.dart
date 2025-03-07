@@ -283,6 +283,7 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+                color: Colors.orange,
               ),
             ),
           ),
@@ -294,8 +295,10 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
               ),
               value: songSortType.index,
               groupValue: currentSortType,
+              activeColor: Colors.orange,
               title: Text(
                 songSortType.name.capitalize().replaceAll('_', ' '),
+                style: const TextStyle(color: Colors.orange),
               ),
               onChanged: (value) {
                 setState(() {
@@ -311,6 +314,7 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+                color: Colors.orange,
               ),
             ),
           ),
@@ -320,10 +324,12 @@ class _SortBottomSheetState extends State<SortBottomSheet> {
                 horizontal: 0,
                 vertical: -4,
               ),
+              activeColor: Colors.orange,
               value: orderType.index,
               groupValue: currentOrderType,
               title: Text(
                 orderType.name.capitalize().replaceAll('_', ' '),
+                style: const TextStyle(color: Colors.orange),
               ),
               onChanged: (value) {
                 setState(() {

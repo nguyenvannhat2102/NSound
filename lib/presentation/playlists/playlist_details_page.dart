@@ -73,7 +73,11 @@ class _PlaylistDetailsPageState extends State<PlaylistDetailsPage> {
             },
           );
         },
-        child: const Icon(Icons.add),
+        backgroundColor: Colors.orange[500],
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
